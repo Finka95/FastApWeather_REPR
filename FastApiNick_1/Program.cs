@@ -5,6 +5,7 @@ builder.Services.AddFastEndpoints();
 
 var app = builder.Build();
 
+
 app.UseAuthorization();
 app.UseFastEndpoints();
 
