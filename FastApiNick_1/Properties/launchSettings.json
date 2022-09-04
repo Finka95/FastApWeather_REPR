@@ -8,18 +8,17 @@
     }
   },
   "profiles": {
-    "FastApiNick_1": {
-      "commandName": "Project",
+    "IIS Express": {
+      "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "https://localhost:7010/weather/3",
-      "applicationUrl": "https://localhost:7010;http://localhost:5120",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "IIS Express": {
-      "commandName": "IISExpress",
+    "FastApiWeather": {
+      "commandName": "Project",
       "launchBrowser": true,
+      "applicationUrl": "http://localhost:7746",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

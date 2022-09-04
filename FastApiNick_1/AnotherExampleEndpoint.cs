@@ -1,14 +1,14 @@
-﻿using System;
 using FastEndpoints;
+using FastApiWeather;
 
 namespace FastApiWeather
 {
-    public class ExampleEndpoint : EndpointWithoutRequest
+    public class ExampleEnAnotherExampleEndpoint : EndpointWithoutRequest
     {
         public override void Configure()
         {
             Verbs(Http.GET);
-            Routes("example");
+            Routes("another/{days}");
         }
 
         public override async Task HandleAsync(CancellationToken ct)

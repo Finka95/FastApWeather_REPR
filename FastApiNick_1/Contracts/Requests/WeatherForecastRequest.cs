@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace FastApiNick_1.Contracts.Requests
+namespace FastApiWeather.Contracts.Requests
 {
     public class WeatherForecastRequest
     {

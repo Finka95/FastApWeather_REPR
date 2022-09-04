@@ -2,14 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using FastApiNick_1.Contracts.Requests;
-using FastApiNick_1.Contracts.Responses;
-using FastApiNick_1.Models;
+using FastApiWeather.Contracts.Requests;
+using FastApiWeather.Contracts.Responses;
+using FastApiWeather.Mappers;
+using FastApiWeather.Models;
 using FastEndpoints;
 
-namespace FastApiNick_1.Endpoints
+namespace FastApiWeather.Endpoints
 {
-    public class WeatherForecastEndpoint : Endpoint<WeatherForecastRequest, WeatherForecastsResponse>
+    public class WeatherForecastEndpoint : Endpoint<WeatherForecastRequest, WeatherForecastsResponse, WeatherForecastMapper>
     {
         private static readonly string[] summaries =
         {
@@ -33,19 +34,13 @@ namespace FastApiNick_1.Endpoints
             var forecasts = Enumerable.Range(1, req.Days).Select(index => new WeatherForecast()
             {
                 Date = DateTime.Now.AddDays(index),
-                TemperatureC = Random.Shared.Next(-20,55),
+                TemperatureC = Random.Shared.Next(-20,30),
                 Summary = summaries[Random.Shared.Next(summaries.Length)]
             }).ToArray();
 
             var response = new WeatherForecastsResponse
             {
-                Forecasts = forecasts.Select(x => new WeatherForecastResponse
-                {
-                    Date = x.Date,
-                    TemperatureC = x.TemperatureC,
-                    TemperatureF = x.TemperatureF,
-                    Summary = x.Summary
-                })
+                Forecasts = forecasts.Select(Map.FromEntity)
             };
 
             await SendAsync(response, cancellation: ct);
